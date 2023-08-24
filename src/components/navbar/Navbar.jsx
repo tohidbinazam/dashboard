@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Navbar = () => {
   return (
     <div className='sidebar' id='sidebar'>
@@ -8,18 +10,18 @@ const Navbar = () => {
               <span>Main</span>
             </li>
             <li className='active'>
-              <a href='index.html'>
+              <Link to='/'>
                 <i className='fe fe-home'></i> <span>Dashboard</span>
-              </a>
+              </Link>
+            </li>
+            <li>
+              <Link to='/user'>
+                <i className='fe fe-users'></i> <span>User</span>
+              </Link>
             </li>
             <li>
               <a href='appointment-list.html'>
                 <i className='fe fe-layout'></i> <span>Appointments</span>
-              </a>
-            </li>
-            <li>
-              <a href='specialities.html'>
-                <i className='fe fe-users'></i> <span>Specialities</span>
               </a>
             </li>
             <li>
@@ -185,7 +187,6 @@ const Navbar = () => {
                     </li>
                     <li>
                       <a href=''>
-                        {' '}
                         <span>Level 2</span>
                       </a>
                     </li>
@@ -193,12 +194,11 @@ const Navbar = () => {
                 </li>
                 <li>
                   <a href=''>
-                    {' '}
                     <span>Level 1</span>
                   </a>
                 </li>
               </ul>
-            </li>{' '}
+            </li>
           </ul>
         </div>
       </div>

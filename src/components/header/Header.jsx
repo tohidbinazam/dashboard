@@ -47,7 +47,7 @@ const Header = () => {
           <div className='dropdown-menu notifications'>
             <div className='topnav-dropdown-header'>
               <span className='notification-title'>Notifications</span>
-              <a href='' className='clear-noti'>
+              <a href='javascript:void(0)' className='clear-noti'>
                 Clear All
               </a>
             </div>
@@ -157,6 +157,7 @@ const Header = () => {
           <a
             href='#'
             className='dropdown-toggle nav-link'
+            type='button'
             data-bs-toggle='dropdown'
           >
             <span className='user-img'>
@@ -169,7 +170,7 @@ const Header = () => {
             </span>
           </a>
           <div className='dropdown-menu'>
-            <div className='user-header'>
+            <div className='user-header dropdown-item'>
               <div className='avatar avatar-sm'>
                 <img
                   src='assets/img/profiles/avatar-01.jpg'

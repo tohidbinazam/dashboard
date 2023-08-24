@@ -1,9 +1,20 @@
-import Home from '../pages/Home';
+import Layout from '../components/Layout';
+import Dashboard from '../components/dashboard_component/Dashboard';
+import User from '../components/dashboard_component/User';
 
 const privateRouter = [
   {
-    path: '/',
-    element: <Home />,
+    element: <Layout />,
+    children: [
+      {
+        path: '/',
+        element: <Dashboard />,
+      },
+      {
+        path: '/user',
+        element: <User />,
+      },
+    ],
   },
 ];
 
