@@ -1,28 +1,30 @@
 import DataTable from 'datatables.net-dt';
 import photo from '../../assets/img/specialities/specialities-05.png';
 import { useEffect } from 'react';
+import DefaultModal from '../modal/DefaultModal';
 
 const User = () => {
   useEffect(() => {
     new DataTable('#myTable');
   }, []);
+
   return (
     <div className='page-wrapper'>
       <div className='content container-fluid'>
         <div className='page-header'>
           <div className='row'>
             <div className='col-sm-7 col-auto'>
-              <h3 className='page-title'>Specialities</h3>
+              <h3 className='page-title'>Specialties</h3>
               <ul className='breadcrumb'>
                 <li className='breadcrumb-item'>
                   <a href='index.html'>Dashboard</a>
                 </li>
-                <li className='breadcrumb-item active'>Specialities</li>
+                <li className='breadcrumb-item active'>Specialties</li>
               </ul>
             </div>
             <div className='col-sm-5 col'>
               <a
-                href='#Add_Specialities_details'
+                data-bs-target='#addUser'
                 data-bs-toggle='modal'
                 className='btn btn-primary float-end mt-2'
               >
@@ -31,6 +33,28 @@ const User = () => {
             </div>
           </div>
         </div>
+
+        <DefaultModal title='Add Specialties' id='addUser'>
+          <form>
+            <div className='row form-row'>
+              <div className='col-12 col-sm-6'>
+                <div className='form-group'>
+                  <label>Specialities</label>
+                  <input type='text' className='form-control' />
+                </div>
+              </div>
+              <div className='col-12 col-sm-6'>
+                <div className='form-group'>
+                  <label>Image</label>
+                  <input type='file' className='form-control' />
+                </div>
+              </div>
+            </div>
+            <button type='submit' className='btn btn-primary w-100'>
+              Save Changes
+            </button>
+          </form>
+        </DefaultModal>
 
         <div className='row'>
           <div className='col-sm-12'>

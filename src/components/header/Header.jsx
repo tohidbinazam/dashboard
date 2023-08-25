@@ -1,6 +1,7 @@
 import logo from '../../assets/img/logo.png';
 import smallLogo from '../../assets/img/logo-small.png';
 import photo from '../../assets/img/profiles/avatar-02.jpg';
+import doctor from '../../assets/img/doctors/doctor-thumb-02.jpg';
 
 const Header = () => {
   return (
@@ -60,7 +61,7 @@ const Header = () => {
                         <img
                           className='avatar-img rounded-circle'
                           alt='User Image'
-                          src='assets/img/doctors/doctor-thumb-01.jpg'
+                          src={doctor}
                         />
                       </span>
                       <div className='media-body flex-grow-1'>
@@ -83,7 +84,7 @@ const Header = () => {
                         <img
                           className='avatar-img rounded-circle'
                           alt='User Image'
-                          src='assets/img/patients/patient1.jpg'
+                          src={doctor}
                         />
                       </span>
                       <div className='media-body flex-grow-1'>
@@ -106,7 +107,7 @@ const Header = () => {
                         <img
                           className='avatar-img rounded-circle'
                           alt='User Image'
-                          src='assets/img/patients/patient2.jpg'
+                          src={doctor}
                         />
                       </span>
                       <div className='media-body flex-grow-1'>
@@ -129,7 +130,7 @@ const Header = () => {
                         <img
                           className='avatar-img rounded-circle'
                           alt='User Image'
-                          src='assets/img/patients/patient3.jpg'
+                          src={doctor}
                         />
                       </span>
                       <div className='media-body flex-grow-1'>
@@ -173,7 +174,7 @@ const Header = () => {
             <div className='user-header dropdown-item'>
               <div className='avatar avatar-sm'>
                 <img
-                  src='assets/img/profiles/avatar-01.jpg'
+                  src={photo}
                   alt='User Image'
                   className='avatar-img rounded-circle'
                 />

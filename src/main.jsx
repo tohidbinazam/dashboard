@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './assets/css/bootstrap-datetimepicker.min.css';
-// import './assets/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './assets/css/font-awesome.min.css';
 import './assets/css/feathericon.min.css';
 import './assets/css/select2.min.css';

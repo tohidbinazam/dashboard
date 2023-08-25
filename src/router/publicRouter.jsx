@@ -1,13 +1,19 @@
-import Home from '../pages/Home';
+import ForgotPass from '../pages/ForgotPass';
+import LOgin from '../pages/LOgin';
+import Register from '../pages/Register';
 
 const PublicRouter = [
   {
     path: '/login',
-    element: <Home />,
+    element: <LOgin />,
   },
   {
     path: '/register',
-    element: <Home />,
+    element: <Register />,
+  },
+  {
+    path: '/forgot',
+    element: <ForgotPass />,
   },
 ];
 
