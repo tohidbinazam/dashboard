@@ -16,13 +16,6 @@ const userModel = Schema(
       type: String,
       required: true,
     },
-    isAdmin: {
-      type: Boolean,
-      required: true,
-    },
-    role: {
-      type: String,
-    },
   },
   { timestamps: true }
 );

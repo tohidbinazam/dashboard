@@ -1,27 +1,26 @@
 import asyncHandler from 'express-async-handler';
+import bcrypt from 'bcryptjs';
 import User from '../model/userModel.js';
 import { generateToken } from '../utility/manageToken.js';
 
-export const registerUser = asyncHandler(async (req, res) => {
+export const register = asyncHandler(async (req, res) => {
   const { email } = req.body;
 
   const check = await User.findOne({ email });
   if (check) {
-    res.status(400);
-    throw new Error('Email already registered');
+    return res.status(400).json({ message: 'User already exists' });
   }
 
   const user = await User.create(req.body);
-  res.status(201).json({ user });
+  res.status(201).json({ message: 'User Registration Done', user });
 });
 
-export const loginUser = asyncHandler(async (req, res) => {
+export const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
   if (!user || !user.matchPassword(password)) {
-    res.status(400);
-    throw new Error('Invalid email or password');
+    return res.status(400).json({ message: 'Invalid email or password' });
   }
 
   const token = generateToken(user._id, user.isAdmin, '365d');
@@ -33,7 +32,7 @@ export const loginUser = asyncHandler(async (req, res) => {
       secure: process.env.NODE_ENV === 'production' ? true : false,
     })
     .status(200)
-    .json({ user });
+    .json({ message: 'Login successfully', user });
 });
 
 // this controller is used to create accessToken for access single user data
