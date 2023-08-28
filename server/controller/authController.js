@@ -11,19 +11,21 @@ export const register = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: 'User already exists' });
   }
 
-  const user = await User.create(req.body);
+  const data = await User.create(req.body);
+  const user = data.toJSON();
   res.status(201).json({ message: 'User Registration Done', user });
 });
 
 export const login = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { email } = req.body;
 
-  const user = await User.findOne({ email });
-  if (!user || !user.matchPassword(password)) {
+  const data = await User.findOne({ email });
+  if (!data || !data.matchPassword(req.body.password)) {
     return res.status(400).json({ message: 'Invalid email or password' });
   }
 
-  const token = generateToken(user._id, user.isAdmin, '365d');
+  const token = generateToken(data._id, data.isAdmin, '365d');
+  const user = data.toJSON();
 
   res
     .cookie('token', token, {

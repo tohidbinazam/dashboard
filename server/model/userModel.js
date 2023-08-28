@@ -34,4 +34,10 @@ userModel.methods.matchPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
+userModel.methods.toJSON = function () {
+  const user = this.toObject();
+  delete user.password;
+  return user;
+};
+
 export default model('User', userModel);
