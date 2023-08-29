@@ -16,6 +16,7 @@ export const register = asyncHandler(async (req, res) => {
   res.status(201).json({ message: 'User Registration Done', user });
 });
 
+// Login controller
 export const login = asyncHandler(async (req, res) => {
   const { email } = req.body;
 
@@ -29,12 +30,22 @@ export const login = asyncHandler(async (req, res) => {
 
   res
     .cookie('token', token, {
-      httpOnly: true,
       maxAge: 12 * 30 * 24 * 60 * 60 * 1000,
       secure: process.env.NODE_ENV === 'production' ? true : false,
     })
     .status(200)
     .json({ message: 'Login successfully', user });
+});
+
+// User logout
+export const logout = asyncHandler(async (req, res) => {
+  res.clearCookie('token').status(200).json({ message: 'Logout successfully' });
+});
+
+export const me = asyncHandler(async (req, res) => {
+  const { id } = req.data;
+  const user = await User.findById(id).select('-password');
+  res.status(200).json({ user });
 });
 
 // this controller is used to create accessToken for access single user data

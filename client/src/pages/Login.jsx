@@ -1,7 +1,44 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/img/logo-white.png';
+import useInput from '../hooks/useInput';
+import { toast } from 'react-toastify';
+import { loginUser } from '../features/auth/authApiSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { clearMsg } from '../features/auth/authSlice';
 
 const LOgin = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { message, error } = useSelector((state) => state.auth);
+
+  const { input, inputChange } = useInput({
+    email: '',
+    password: '',
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!input.email && !input.password) {
+      return toast.error('Please fill all the fields');
+    }
+    dispatch(loginUser(input));
+  };
+
+  useEffect(() => {
+    if (message) {
+      toast.success(message);
+      dispatch(clearMsg());
+      navigate('/');
+    }
+
+    if (error) {
+      toast.error(error);
+      dispatch(clearMsg());
+    }
+  }, [dispatch, error, message, navigate]);
+
   return (
     <div className='main-wrapper login-body'>
       <div className='login-wrapper'>
@@ -15,19 +52,25 @@ const LOgin = () => {
                 <h1>Login</h1>
                 <p className='account-subtitle'>Access to our dashboard</p>
 
-                <form action='https://doccure.dreamguystech.com/html/template/admin/index.html'>
+                <form onSubmit={handleSubmit}>
                   <div className='form-group'>
                     <input
                       className='form-control'
                       type='text'
                       placeholder='Email'
+                      name='email'
+                      value={input.email}
+                      onChange={inputChange}
                     />
                   </div>
                   <div className='form-group'>
                     <input
                       className='form-control'
-                      type='text'
+                      type='password'
                       placeholder='Password'
+                      name='password'
+                      value={input.password}
+                      onChange={inputChange}
                     />
                   </div>
                   <div className='form-group'>

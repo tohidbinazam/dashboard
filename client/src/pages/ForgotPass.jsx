@@ -1,7 +1,25 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/img/logo-white.png';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearMsg } from '../features/auth/authSlice';
+import { toast } from 'react-toastify';
 
 const ForgotPass = () => {
+  const dispatch = useDispatch();
+  const { message, error } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (message) {
+      toast.success(message);
+      dispatch(clearMsg());
+    }
+
+    if (error) {
+      toast.error(error);
+      dispatch(clearMsg());
+    }
+  }, [dispatch, error, message]);
   return (
     <div className='main-wrapper login-body'>
       <div className='login-wrapper'>

@@ -15,7 +15,12 @@ const port = process.env.PORT || 5050;
 const app = express();
 app.use(cookieParser());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

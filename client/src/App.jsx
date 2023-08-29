@@ -2,16 +2,21 @@ import { RouterProvider } from 'react-router-dom';
 import router from './router/router';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import { Provider } from 'react-redux';
-import store from './app/store';
+import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import { me } from './features/auth/authApiSlice';
 
 function App() {
+  const dispatch = useDispatch();
+  const cookie = Cookies.get('token');
+
+  if (cookie) {
+    dispatch(me());
+  }
   return (
     <>
-      <Provider store={store}>
-        <ToastContainer />
-        <RouterProvider router={router} />
-      </Provider>
+      <ToastContainer />
+      <RouterProvider router={router} />
     </>
   );
 }

@@ -1,9 +1,24 @@
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import logo from '../../assets/img/logo.png';
 import smallLogo from '../../assets/img/logo-small.png';
 import photo from '../../assets/img/profiles/avatar-02.jpg';
 import doctor from '../../assets/img/doctors/doctor-thumb-02.jpg';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../features/auth/authSlice';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    Cookies.remove('token');
+    dispatch(logout());
+    navigate('/login');
+  };
+
   return (
     <div className='header'>
       <div className='header-left'>
@@ -180,7 +195,7 @@ const Header = () => {
                 />
               </div>
               <div className='user-text'>
-                <h6>Ryan Taylor</h6>
+                <h6>{user && user.name}</h6>
                 <p className='text-muted mb-0'>Administrator</p>
               </div>
             </div>
@@ -190,7 +205,7 @@ const Header = () => {
             <a className='dropdown-item' href='settings.html'>
               Settings
             </a>
-            <a className='dropdown-item' href='login.html'>
+            <a className='dropdown-item' onClick={handleLogout} to='/login'>
               Logout
             </a>
           </div>

@@ -4,15 +4,15 @@ import useInput from '../hooks/useInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../features/auth/authApiSlice';
 import { toast } from 'react-toastify';
-import { clearMsg } from '../features/auth/authSlice';
 import { useEffect } from 'react';
+import { clearMsg } from '../features/auth/authSlice';
 
 const Register = () => {
   const dispatch = useDispatch();
-  const { message, error } = useSelector((state) => state.auth);
   const navigate = useNavigate();
+  const { message, error } = useSelector((state) => state.auth);
 
-  const { input, handleInputChange } = useInput({
+  const { input, inputChange } = useInput({
     name: '',
     email: '',
     password: '',
@@ -34,7 +34,7 @@ const Register = () => {
     if (message) {
       toast.success(message);
       dispatch(clearMsg());
-      navigate('/');
+      navigate('/login');
     }
 
     if (error) {
@@ -64,7 +64,7 @@ const Register = () => {
                       placeholder='Name'
                       name='name'
                       value={input.name}
-                      onChange={handleInputChange}
+                      onChange={inputChange}
                     />
                   </div>
                   <div className='form-group'>
@@ -74,7 +74,7 @@ const Register = () => {
                       placeholder='Email'
                       name='email'
                       value={input.email}
-                      onChange={handleInputChange}
+                      onChange={inputChange}
                     />
                   </div>
                   <div className='form-group'>
@@ -84,7 +84,7 @@ const Register = () => {
                       placeholder='Password'
                       name='password'
                       value={input.password}
-                      onChange={handleInputChange}
+                      onChange={inputChange}
                     />
                   </div>
                   <div className='form-group'>
@@ -94,7 +94,7 @@ const Register = () => {
                       placeholder='Confirm Password'
                       name='c_password'
                       value={input.c_password}
-                      onChange={handleInputChange}
+                      onChange={inputChange}
                     />
                   </div>
                   <div className='form-group mb-0'>
