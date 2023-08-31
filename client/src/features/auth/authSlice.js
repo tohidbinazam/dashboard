@@ -19,6 +19,9 @@ const authSlice = createSlice({
       state.token = false;
       state.user = null;
     },
+    addToken: (state) => {
+      state.token = true;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -57,11 +60,12 @@ const authSlice = createSlice({
       })
       .addCase(me.rejected, (state, action) => {
         state.loading = false;
+        state.token = false;
         state.error = action.error.message;
       });
   },
 });
 
-export const { clearMsg, logout } = authSlice.actions;
+export const { clearMsg, logout, addToken } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -1,18 +1,24 @@
 import Layout from '../components/Layout';
 import Dashboard from '../components/dashboard_component/Dashboard';
 import User from '../components/dashboard_component/User';
+import PrivateGard from './gard/PrivateGard';
 
 const privateRouter = [
   {
-    element: <Layout />,
+    element: <PrivateGard />,
     children: [
       {
-        path: '/',
-        element: <Dashboard />,
-      },
-      {
-        path: '/user',
-        element: <User />,
+        element: <Layout />,
+        children: [
+          {
+            path: '/',
+            element: <Dashboard />,
+          },
+          {
+            path: '/user',
+            element: <User />,
+          },
+        ],
       },
     ],
   },
