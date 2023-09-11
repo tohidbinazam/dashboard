@@ -8,7 +8,6 @@ const permissionModel = Schema(
     },
     slug: {
       type: String,
-      required: true,
     },
     status: {
       type: Boolean,
@@ -22,13 +21,18 @@ const permissionModel = Schema(
   { timestamps: true }
 );
 
-// make slug before save
+// add slug before save
 permissionModel.pre('save', function (next) {
-  if (!this.isModified('slug')) {
+  if (!this.isModified('name')) {
     next();
   }
-  this.slug = this.name.toLowerCase().split(' ').join('-');
+  this.slug = this.makeSlug();
   next();
 });
+
+// make slug
+permissionModel.methods.makeSlug = function () {
+  return this.name.toLowerCase().split(' ').join('-');
+};
 
 export default model('Permission', permissionModel);

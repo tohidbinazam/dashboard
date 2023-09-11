@@ -14,7 +14,6 @@ const roleModel = Schema(
     ],
     slug: {
       type: String,
-      required: true,
     },
     status: {
       type: Boolean,
@@ -30,7 +29,7 @@ const roleModel = Schema(
 
 // make slug before save
 roleModel.pre('save', function (next) {
-  if (!this.isModified('slug')) {
+  if (!this.isModified('name')) {
     next();
   }
   this.slug = this.name.toLowerCase().split(' ').join('-');

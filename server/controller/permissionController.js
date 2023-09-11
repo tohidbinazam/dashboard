@@ -53,6 +53,7 @@ export const deletePermissionById = asyncHandler(async (req, res) => {
 // Update permission by id controller
 export const updatePermissionById = asyncHandler(async (req, res) => {
   const id = req.params.id;
+  const { name } = req.body;
 
   const permission = await Permission.findByIdAndUpdate(id, req.body, {
     new: true,
@@ -60,6 +61,11 @@ export const updatePermissionById = asyncHandler(async (req, res) => {
   if (!permission) {
     res.status(404);
     throw new Error('Permission not found');
+  }
+
+  if (name) {
+    permission.slug = permission.makeSlug();
+    await permission.save();
   }
 
   res
