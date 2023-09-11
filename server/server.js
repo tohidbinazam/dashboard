@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 import mongoDB from './config/mongoDB.js';
 import authRoute from './router/authRoute.js';
 import userRoute from './router/userRoute.js';
+import roleRoute from './router/roleRoute.js';
+import permissionRoute from './router/permissionRoute.js';
 import errorHandler from './utility/errorHandler.js';
 
 dotenv.config();
@@ -27,6 +29,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/user', userRoute);
+app.use('/api/v1/role', roleRoute);
+app.use('/api/v1/permission', permissionRoute);
 
 app.use(errorHandler);
 
