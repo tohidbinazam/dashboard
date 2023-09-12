@@ -10,6 +10,7 @@ const roleModel = Schema(
       {
         type: Schema.Types.ObjectId,
         ref: 'Permission',
+        required: true,
       },
     ],
     slug: {

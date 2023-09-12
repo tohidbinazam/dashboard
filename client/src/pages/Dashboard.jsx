@@ -1,5 +1,5 @@
-import Profile from '../profile/Profile';
-import photo from '../../assets/img/profiles/avatar-01.jpg';
+import Profile from '../components/profile/Profile';
+import photo from '../assets/img/profiles/avatar-01.jpg';
 
 const Dashboard = () => {
   return (

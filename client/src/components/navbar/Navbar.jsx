@@ -20,14 +20,14 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a href='appointment-list.html'>
-                <i className='fe fe-layout'></i> <span>Appointments</span>
-              </a>
+              <Link to='/permission'>
+                <i className='fe fe-layout'></i> <span>Permission</span>
+              </Link>
             </li>
             <li>
-              <a href='doctor-list.html'>
-                <i className='fe fe-user-plus'></i> <span>Doctors</span>
-              </a>
+              <Link to='/role'>
+                <i className='fe fe-user-plus'></i> <span>Role</span>
+              </Link>
             </li>
             <li>
               <a href='patient-list.html'>

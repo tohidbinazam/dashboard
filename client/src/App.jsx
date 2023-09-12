@@ -15,9 +15,10 @@ function App() {
     dispatch(addToken());
     dispatch(me());
   }
+
   return (
     <>
-      <ToastContainer />
+      <ToastContainer theme='dark' />
       <RouterProvider router={router} />
     </>
   );

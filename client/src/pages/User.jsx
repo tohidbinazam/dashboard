@@ -1,7 +1,7 @@
 import DataTable from 'datatables.net-dt';
-import photo from '../../assets/img/specialities/specialities-05.png';
+import photo from '../assets/img/specialities/specialities-05.png';
 import { useEffect } from 'react';
-import DefaultModal from '../modal/DefaultModal';
+import DefaultModal from '../components/modal/DefaultModal';
 
 const User = () => {
   useEffect(() => {
@@ -14,12 +14,12 @@ const User = () => {
         <div className='page-header'>
           <div className='row'>
             <div className='col-sm-7 col-auto'>
-              <h3 className='page-title'>Specialties</h3>
+              <h3 className='page-title'>User</h3>
               <ul className='breadcrumb'>
                 <li className='breadcrumb-item'>
                   <a href='index.html'>Dashboard</a>
                 </li>
-                <li className='breadcrumb-item active'>Specialties</li>
+                <li className='breadcrumb-item active'>Users</li>
               </ul>
             </div>
             <div className='col-sm-5 col'>

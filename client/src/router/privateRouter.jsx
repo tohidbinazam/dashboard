@@ -1,6 +1,8 @@
 import Layout from '../components/Layout';
-import Dashboard from '../components/dashboard_component/Dashboard';
-import User from '../components/dashboard_component/User';
+import Dashboard from '../pages/Dashboard';
+import Permission from '../pages/Permission';
+import Role from '../pages/Role';
+import User from '../pages/User';
 import PrivateGard from './gard/PrivateGard';
 
 const privateRouter = [
@@ -17,6 +19,14 @@ const privateRouter = [
           {
             path: '/user',
             element: <User />,
+          },
+          {
+            path: '/permission',
+            element: <Permission />,
+          },
+          {
+            path: '/role',
+            element: <Role />,
           },
         ],
       },

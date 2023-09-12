@@ -6,7 +6,9 @@ const useInput = (int) => {
   const inputChange = (e) => {
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  return { input, inputChange };
+  const clearFrom = () => setInput(int);
+
+  return { input, inputChange, clearFrom };
 };
 
 export default useInput;

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../assets/img/logo-white.png';
 import useInput from '../hooks/useInput';
 import { toast } from 'react-toastify';
@@ -9,7 +9,6 @@ import { clearMsg } from '../features/auth/authSlice';
 
 const LOgin = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { message, error } = useSelector((state) => state.auth);
 
@@ -27,17 +26,11 @@ const LOgin = () => {
   };
 
   useEffect(() => {
-    if (message) {
-      toast.success(message);
-      dispatch(clearMsg());
-      navigate('/');
-    }
-
     if (error) {
       toast.error(error);
       dispatch(clearMsg());
     }
-  }, [dispatch, error, message, navigate]);
+  }, [dispatch, error, message]);
 
   return (
     <div className='main-wrapper login-body'>

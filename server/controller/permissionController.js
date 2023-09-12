@@ -18,8 +18,9 @@ export const createPermission = asyncHandler(async (req, res) => {
 
 // Get all permissions controller
 export const getAllPermissions = asyncHandler(async (req, res) => {
-  const permissions = await Permission.find();
-  res.status(200).json(permissions);
+  // find all permissions and reverse the array to get the latest permission first
+  const permission = await Permission.find({}).sort({ createdAt: -1 });
+  res.status(200).json(permission);
 });
 
 // Get permission by id controller
