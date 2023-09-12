@@ -27,13 +27,18 @@ const roleModel = Schema(
   { timestamps: true }
 );
 
-// make slug before save
+// add slug before save
 roleModel.pre('save', function (next) {
   if (!this.isModified('name')) {
     next();
   }
-  this.slug = this.name.toLowerCase().split(' ').join('-');
+  this.slug = this.makeSlug();
   next();
 });
+
+// make slug
+roleModel.methods.makeSlug = function () {
+  return this.name.toLowerCase().split(' ').join('-');
+};
 
 export default model('Role', roleModel);

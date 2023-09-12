@@ -50,11 +50,17 @@ export const deleteRoleById = asyncHandler(async (req, res) => {
 // Update role by id controller
 export const updateRoleById = asyncHandler(async (req, res) => {
   const id = req.params.id;
+  const { name } = req.body;
 
   const role = await Role.findByIdAndUpdate(id, req.body, { new: true });
   if (!role) {
     res.status(404);
     throw new Error('Role not found');
+  }
+
+  if (name) {
+    role.slug = role.makeSlug();
+    await role.save();
   }
   res.status(200).json({ message: 'Role updated successfully', role });
 });
