@@ -6,6 +6,7 @@ import {
   addPermission,
   deletePermission,
   getAllPermission,
+  updatePermission,
 } from '../features/user/userApiSlice';
 import { clearMsg, selectUser } from '../features/user/userSlice';
 import useInput from '../hooks/useInput';
@@ -17,7 +18,7 @@ const Permission = () => {
   const dispatch = useDispatch();
   const { permission, message, error } = useSelector(selectUser);
 
-  const { input, inputChange, clearFrom } = useInput({
+  const { input, inputChange, clearFrom, setInput } = useInput({
     name: '',
   });
 
@@ -45,6 +46,20 @@ const Permission = () => {
         dispatch(deletePermission(id));
       }
     });
+  };
+
+  const handleEditModal = (item) => {
+    setInput({ id: item._id, name: item.name });
+  };
+  const handleEdit = (e) => {
+    e.preventDefault();
+    dispatch(updatePermission({ id: input.id, data: { name: input.name } }));
+    clearFrom();
+  };
+  const handleStatus = (item) => {
+    dispatch(
+      updatePermission({ id: item._id, data: { status: !item.status } })
+    );
   };
 
   if (message) {
@@ -86,8 +101,12 @@ const Permission = () => {
           </div>
         </div>
 
-        <DefaultModal title='Add Permission' id='addUser'>
-          <form onSubmit={handleSubmit}>
+        <DefaultModal
+          title={`${input.name ? 'Edit' : 'Add'} Permission`}
+          id='addUser'
+          clearFrom={clearFrom}
+        >
+          <form onSubmit={input.id ? handleEdit : handleSubmit}>
             <div className='row form-row'>
               <div className='col-12 col-sm-12'>
                 <div className='form-group'>
@@ -141,17 +160,23 @@ const Permission = () => {
                           <td>{index + 1}</td>
                           <td>{item.name}</td>
                           <td>{item.slug}</td>
-                          <td>{timeAgo(item.createdAt)}</td>
+                          <td>{timeAgo(item.updatedAt)}</td>
 
                           <td>
                             <div className='status-toggle'>
                               <input
                                 type='checkbox'
-                                id='status_1'
+                                id={item._id}
                                 className='check'
-                                checked
+                                checked={item.status}
                               />
-                              <label htmlFor='status_1' className='checktoggle'>
+                              <label
+                                htmlFor={item._id}
+                                className='checktoggle'
+                                onClick={() => {
+                                  handleStatus(item);
+                                }}
+                              >
                                 checkbox
                               </label>
                             </div>
@@ -160,7 +185,9 @@ const Permission = () => {
                             <div className='actions'>
                               <button
                                 className='btn btn-sm bg-success-light me-2'
+                                data-bs-target='#addUser'
                                 data-bs-toggle='modal'
+                                onClick={() => handleEditModal(item)}
                               >
                                 <i className='fe fe-pencil'></i> Edit
                               </button>

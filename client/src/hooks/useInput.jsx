@@ -8,7 +8,7 @@ const useInput = (int) => {
   };
   const clearFrom = () => setInput(int);
 
-  return { input, inputChange, clearFrom };
+  return { input, setInput, inputChange, clearFrom };
 };
 
 export default useInput;

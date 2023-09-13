@@ -3,6 +3,7 @@ import {
   addPermission,
   deletePermission,
   getAllPermission,
+  updatePermission,
 } from './userApiSlice';
 
 const userSlice = createSlice({
@@ -43,6 +44,17 @@ const userSlice = createSlice({
         state.permission = state.permission.filter(
           (permission) => permission._id !== payload.permission._id
         );
+        state.message = payload.message;
+      })
+      .addCase(updatePermission.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(updatePermission.fulfilled, (state, { payload }) => {
+        state.permission[
+          state.permission.findIndex(
+            (permission) => permission._id == payload.permission._id
+          )
+        ] = payload.permission;
         state.message = payload.message;
       });
   },

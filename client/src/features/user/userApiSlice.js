@@ -49,3 +49,21 @@ export const deletePermission = createAsyncThunk(
     }
   }
 );
+
+export const updatePermission = createAsyncThunk(
+  'user/updatePermission',
+  async ({ id, data }) => {
+    try {
+      const res = await axios.patch(
+        `http://localhost:5050/api/v1/permission/${id}`,
+        data,
+        {
+          withCredentials: true,
+        }
+      );
+      return res.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  }
+);
