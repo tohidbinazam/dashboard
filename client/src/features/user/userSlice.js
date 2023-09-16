@@ -1,9 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   addPermission,
+  addRole,
   deletePermission,
+  deleteRole,
   getAllPermission,
+  getAllRole,
   updatePermission,
+  updateRole,
 } from './userApiSlice';
 
 const userSlice = createSlice({
@@ -55,6 +59,35 @@ const userSlice = createSlice({
             (permission) => permission._id == payload.permission._id
           )
         ] = payload.permission;
+        state.message = payload.message;
+      })
+      .addCase(getAllRole.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(getAllRole.fulfilled, (state, { payload }) => {
+        state.role = payload;
+      })
+      .addCase(addRole.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addRole.fulfilled, (state, { payload }) => {
+        state.role.unshift(payload.role);
+        state.message = payload.message;
+      })
+      .addCase(deleteRole.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(deleteRole.fulfilled, (state, { payload }) => {
+        state.role = state.role.filter((role) => role._id !== payload.role._id);
+        state.message = payload.message;
+      })
+      .addCase(updateRole.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(updateRole.fulfilled, (state, { payload }) => {
+        state.role[
+          state.role.findIndex((role) => role._id == payload.role._id)
+        ] = payload.role;
         state.message = payload.message;
       });
   },

@@ -1,11 +1,9 @@
 import DefaultModal from '../components/modal/DefaultModal';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DataTable from 'datatables.net-dt';
 import {
   addPermission,
   deletePermission,
-  getAllPermission,
   updatePermission,
 } from '../features/user/userApiSlice';
 import { clearMsg, selectUser } from '../features/user/userSlice';
@@ -13,6 +11,7 @@ import useInput from '../hooks/useInput';
 import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 import timeAgo from '../utils/timeAgo';
+import { useEffect } from 'react';
 
 const Permission = () => {
   const dispatch = useDispatch();
@@ -71,10 +70,9 @@ const Permission = () => {
     dispatch(clearMsg());
   }
 
-  new DataTable('#permissionTable');
   useEffect(() => {
-    dispatch(getAllPermission());
-  }, [dispatch]);
+    new DataTable('#permissionTable');
+  }, []);
   return (
     <div className='page-wrapper'>
       <div className='content container-fluid'>
@@ -149,7 +147,7 @@ const Permission = () => {
                         <th>No</th>
                         <th>name</th>
                         <th>slug</th>
-                        <th>CreatedAt</th>
+                        <th>UpdatedAt</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>

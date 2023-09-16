@@ -9,15 +9,18 @@ export const createRole = asyncHandler(async (req, res) => {
   if (findRole) {
     return res.status(400).json({ message: 'Role already exists' });
   }
-
-  const role = await Role.create({ ...req.body });
+  // create and populate permissions key data
+  const role_cr = await Role.create(req.body);
+  const role = await Role.findById(role_cr._id).populate('permissions');
 
   res.status(201).json({ message: 'Role created successfully', role });
 });
 
 // Get all roles controller
 export const getAllRoles = asyncHandler(async (req, res) => {
-  const roles = await Role.find();
+  const roles = await Role.find()
+    .populate('permissions')
+    .sort({ createdAt: -1 });
   res.status(200).json(roles);
 });
 
@@ -52,7 +55,9 @@ export const updateRoleById = asyncHandler(async (req, res) => {
   const id = req.params.id;
   const { name } = req.body;
 
-  const role = await Role.findByIdAndUpdate(id, req.body, { new: true });
+  const role = await Role.findByIdAndUpdate(id, req.body, {
+    new: true,
+  }).populate('permissions');
   if (!role) {
     res.status(404);
     throw new Error('Role not found');

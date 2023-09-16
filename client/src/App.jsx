@@ -6,6 +6,8 @@ import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
 import { me } from './features/auth/authApiSlice';
 import { addToken } from './features/auth/authSlice';
+import { useEffect } from 'react';
+import { getAllPermission, getAllRole } from './features/user/userApiSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +17,10 @@ function App() {
     dispatch(addToken());
     dispatch(me());
   }
+  useEffect(() => {
+    dispatch(getAllPermission());
+    dispatch(getAllRole());
+  }, [cookie, dispatch]);
 
   return (
     <>

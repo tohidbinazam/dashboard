@@ -67,3 +67,54 @@ export const updatePermission = createAsyncThunk(
     }
   }
 );
+
+export const getAllRole = createAsyncThunk('user/getAllRole', async () => {
+  try {
+    const res = await axios.get('http://localhost:5050/api/v1/role', {
+      withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    throw new Error(error.response.data.message);
+  }
+});
+
+export const addRole = createAsyncThunk('user/addRole', async (data) => {
+  try {
+    const res = await axios.post('http://localhost:5050/api/v1/role', data, {
+      withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    throw new Error(error.response.data.message);
+  }
+});
+
+export const deleteRole = createAsyncThunk('user/deleteRole', async (id) => {
+  try {
+    const res = await axios.delete(`http://localhost:5050/api/v1/role/${id}`, {
+      withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    throw new Error(error.response.data.message);
+  }
+});
+
+export const updateRole = createAsyncThunk(
+  'user/updateRole',
+  async ({ id, data }) => {
+    try {
+      const res = await axios.patch(
+        `http://localhost:5050/api/v1/role/${id}`,
+        data,
+        {
+          withCredentials: true,
+        }
+      );
+      return res.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  }
+);
