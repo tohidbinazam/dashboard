@@ -14,14 +14,20 @@ const userModel = Schema(
     },
     number: {
       type: String,
+      unique: true,
     },
     password: {
       type: String,
       required: true,
     },
+    role: {
+      type: Schema.Types.ObjectId,
+      ref: 'Role',
+      required: true,
+    },
     status: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     trash: {
       type: Boolean,

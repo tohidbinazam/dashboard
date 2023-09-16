@@ -5,13 +5,14 @@ const permissionModel = Schema(
     name: {
       type: String,
       required: true,
+      unique: true,
     },
     slug: {
       type: String,
     },
     status: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     trash: {
       type: Boolean,

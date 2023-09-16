@@ -5,6 +5,7 @@ const roleModel = Schema(
     name: {
       type: String,
       required: true,
+      unique: true,
     },
     permissions: [
       {
@@ -18,7 +19,7 @@ const roleModel = Schema(
     },
     status: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     trash: {
       type: Boolean,

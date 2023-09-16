@@ -118,3 +118,53 @@ export const updateRole = createAsyncThunk(
     }
   }
 );
+export const getAllUser = createAsyncThunk('user/getAllUser', async () => {
+  try {
+    const res = await axios.get('http://localhost:5050/api/v1/user', {
+      withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    throw new Error(error.response.data.message);
+  }
+});
+
+export const addUser = createAsyncThunk('user/addUser', async (data) => {
+  try {
+    const res = await axios.post('http://localhost:5050/api/v1/user', data, {
+      withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    throw new Error(error.response.data.message);
+  }
+});
+
+export const deleteUser = createAsyncThunk('user/deleteUser', async (id) => {
+  try {
+    const res = await axios.delete(`http://localhost:5050/api/v1/user/${id}`, {
+      withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    throw new Error(error.response.data.message);
+  }
+});
+
+export const updateUser = createAsyncThunk(
+  'user/updateUser',
+  async ({ id, data }) => {
+    try {
+      const res = await axios.patch(
+        `http://localhost:5050/api/v1/user/${id}`,
+        data,
+        {
+          withCredentials: true,
+        }
+      );
+      return res.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  }
+);

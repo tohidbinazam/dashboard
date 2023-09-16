@@ -58,6 +58,7 @@ export const updateRoleById = asyncHandler(async (req, res) => {
   const role = await Role.findByIdAndUpdate(id, req.body, {
     new: true,
   }).populate('permissions');
+
   if (!role) {
     res.status(404);
     throw new Error('Role not found');

@@ -17,7 +17,7 @@ const Permission = () => {
   const dispatch = useDispatch();
   const { permission, message, error } = useSelector(selectUser);
 
-  const { input, inputChange, clearFrom, setInput } = useInput({
+  const { input, setInput, inputChange, clearFrom } = useInput({
     name: '',
   });
 
@@ -100,7 +100,7 @@ const Permission = () => {
         </div>
 
         <DefaultModal
-          title={`${input.name ? 'Edit' : 'Add'} Permission`}
+          title={`${input.id ? 'Edit' : 'Add'} Permission`}
           id='addUser'
           clearFrom={clearFrom}
         >
@@ -145,8 +145,8 @@ const Permission = () => {
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>name</th>
-                        <th>slug</th>
+                        <th>Name</th>
+                        <th>Slug</th>
                         <th>UpdatedAt</th>
                         <th>Status</th>
                         <th>Action</th>

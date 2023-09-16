@@ -13,7 +13,7 @@ const Role = () => {
   const dispatch = useDispatch();
   const { role, message, error, permission } = useSelector(selectUser);
 
-  const { input, inputChange, clearFrom, setInput } = useInput({
+  const { input, setInput, inputChange, clearFrom } = useInput({
     name: '',
     permissions: [],
   });
@@ -131,9 +131,12 @@ const Role = () => {
                     onChange={inputChange}
                     value={input.name}
                     placeholder='Role name'
-                    className='form-control mb-3'
+                    className='form-control'
                   />
                   {/* input type checkbox */}
+                </div>
+                <div className='form-group'>
+                  <label>Permission</label>
                   {permission?.map((item, index) => (
                     <div key={index} className='form-check form-check-inline'>
                       <input
@@ -177,8 +180,9 @@ const Role = () => {
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>name</th>
+                        <th>Name</th>
                         <th>Permission</th>
+                        <th>Slug</th>
                         <th>UpdatedAt</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -196,6 +200,7 @@ const Role = () => {
                               ))}
                             </ul>
                           </td>
+                          <td>{item.slug}</td>
                           <td>{timeAgo(item.updatedAt)}</td>
 
                           <td>

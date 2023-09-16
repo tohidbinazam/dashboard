@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+  let location = useLocation();
+
   return (
     <div className='sidebar' id='sidebar'>
       <div className='sidebar-inner slimscroll'>
@@ -9,22 +11,22 @@ const Navbar = () => {
             <li className='menu-title'>
               <span>Main</span>
             </li>
-            <li className='active'>
+            <li className={location.pathname == '/' && 'active'}>
               <Link to='/'>
                 <i className='fe fe-home'></i> <span>Dashboard</span>
               </Link>
             </li>
-            <li>
+            <li className={location.pathname == '/user' && 'active'}>
               <Link to='/user'>
                 <i className='fe fe-users'></i> <span>User</span>
               </Link>
             </li>
-            <li>
+            <li className={location.pathname == '/permission' && 'active'}>
               <Link to='/permission'>
                 <i className='fe fe-layout'></i> <span>Permission</span>
               </Link>
             </li>
-            <li>
+            <li className={location.pathname == '/role' && 'active'}>
               <Link to='/role'>
                 <i className='fe fe-user-plus'></i> <span>Role</span>
               </Link>
