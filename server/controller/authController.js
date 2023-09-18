@@ -20,12 +20,20 @@ export const register = asyncHandler(async (req, res) => {
 export const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  const data = await User.findOne({ email });
+  const data = await User.findOne({ email }).populate({
+    path: 'role',
+    select: 'name',
+    populate: {
+      path: 'permissions',
+      select: 'name',
+    },
+  });
+
   if (!data || !data.matchPassword(password)) {
     return res.status(400).json({ message: 'Invalid email or password' });
   }
 
-  const token = generateToken(data._id, data.isAdmin, '365d');
+  const token = generateToken(data._id, '365d');
   const user = data.removePass();
 
   res
@@ -44,7 +52,18 @@ export const logout = asyncHandler(async (req, res) => {
 
 export const me = asyncHandler(async (req, res) => {
   const { id } = req.data;
-  const user = await User.findById(id).select('-password');
 
-  res.status(200).json({ user });
+  // populate role and permission field with name and slug
+  const user = await User.findById(id)
+    .populate({
+      path: 'role',
+      select: 'name',
+      populate: {
+        path: 'permissions',
+        select: 'name',
+      },
+    })
+    .select('-password');
+
+  res.status(200).json(user);
 });

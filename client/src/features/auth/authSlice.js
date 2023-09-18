@@ -6,6 +6,7 @@ const authSlice = createSlice({
   initialState: {
     token: false,
     user: null,
+    permissions: null,
     message: null,
     error: null,
     loading: false,
@@ -18,6 +19,7 @@ const authSlice = createSlice({
     logout: (state) => {
       state.token = false;
       state.user = null;
+      state.permissions = null;
     },
     addToken: (state) => {
       state.token = true;
@@ -40,11 +42,12 @@ const authSlice = createSlice({
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
       })
-      .addCase(loginUser.fulfilled, (state, action) => {
+      .addCase(loginUser.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.user = action.payload.user;
-        state.message = action.payload.message;
         state.token = true;
+        state.user = payload.user;
+        state.permissions = payload.user.role.permissions;
+        state.message = payload.message;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
@@ -53,10 +56,10 @@ const authSlice = createSlice({
       .addCase(me.pending, (state) => {
         state.loading = true;
       })
-      .addCase(me.fulfilled, (state, action) => {
+      .addCase(me.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.user = action.payload.user;
-        state.token = true;
+        state.user = payload;
+        state.permissions = payload.role.permissions;
       })
       .addCase(me.rejected, (state, action) => {
         state.loading = false;
@@ -65,6 +68,8 @@ const authSlice = createSlice({
       });
   },
 });
+
+export const selectAuth = (state) => state.auth;
 
 export const { clearMsg, logout, addToken } = authSlice.actions;
 

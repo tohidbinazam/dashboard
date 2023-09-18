@@ -1,6 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectAuth } from '../../features/auth/authSlice';
 
 const Navbar = () => {
+  const { permissions } = useSelector(selectAuth);
   let location = useLocation();
 
   return (
@@ -11,27 +14,56 @@ const Navbar = () => {
             <li className='menu-title'>
               <span>Main</span>
             </li>
-            <li className={location.pathname == '/' && 'active'}>
-              <Link to='/'>
-                <i className='fe fe-home'></i> <span>Dashboard</span>
-              </Link>
-            </li>
-            <li className={location.pathname == '/user' && 'active'}>
-              <Link to='/user'>
-                <i className='fe fe-users'></i> <span>User</span>
-              </Link>
-            </li>
-            <li className={location.pathname == '/permission' && 'active'}>
-              <Link to='/permission'>
-                <i className='fe fe-layout'></i> <span>Permission</span>
-              </Link>
-            </li>
-            <li className={location.pathname == '/role' && 'active'}>
-              <Link to='/role'>
-                <i className='fe fe-user-plus'></i> <span>Role</span>
-              </Link>
-            </li>
-            <li>
+            {/* {permissions?.map((permission) => (
+              <li
+                key={permission._id}
+                className={
+                  location.pathname == `/${permission.slug}` && 'active'
+                }
+              >
+                <Link to={`/${permission.slug}`}>
+                  <i className='fe fe-home'></i> <span>{permission.name}</span>
+                </Link>
+              </li>
+            ))} */}
+            {permissions?.some((item) => item.name == 'Dashboard') && (
+              <li className={location.pathname == '/' ? 'active' : undefined}>
+                <Link to='/'>
+                  <i className='fe fe-home'></i> <span>Dashboard</span>
+                </Link>
+              </li>
+            )}
+            {permissions?.some((item) => item.name == 'User') && (
+              <li
+                className={location.pathname == '/user' ? 'active' : undefined}
+              >
+                <Link to='/user'>
+                  <i className='fe fe-users'></i> <span>User</span>
+                </Link>
+              </li>
+            )}
+            {permissions?.some((item) => item.name == 'Role') && (
+              <li
+                className={location.pathname == '/role' ? 'active' : undefined}
+              >
+                <Link to='/role'>
+                  <i className='fe fe-user-plus'></i> <span>Role</span>
+                </Link>
+              </li>
+            )}
+            {permissions?.some((item) => item.name == 'Permission') && (
+              <li
+                className={
+                  location.pathname == '/permission' ? 'active' : undefined
+                }
+              >
+                <Link to='/permission'>
+                  <i className='fe fe-layout'></i> <span>Permission</span>
+                </Link>
+              </li>
+            )}
+
+            {/* <li>
               <a href='patient-list.html'>
                 <i className='fe fe-user'></i> <span>Patients</span>
               </a>
@@ -200,7 +232,7 @@ const Navbar = () => {
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

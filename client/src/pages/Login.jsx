@@ -73,17 +73,18 @@ const LOgin = () => {
                   </div>
                 </form>
 
-                <div className='text-center forgotpass'>
-                  <Link to='/forgot'>Forgot Password?</Link>
-                </div>
                 <div className='login-or'>
                   <span className='or-line'></span>
                   <span className='span-or'>or</span>
                 </div>
 
-                <div className='text-center dont-have'>
-                  Don’t have an account? <Link to='/register'>Register</Link>
+                <div className='text-center forgotpass'>
+                  <Link to='/forgot'>Forgot Password?</Link>
                 </div>
+
+                {/* <div className='text-center dont-have'>
+                  Don’t have an account? <Link to='/register'>Register</Link>
+                </div> */}
               </div>
             </div>
           </div>

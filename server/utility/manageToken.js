@@ -1,7 +1,7 @@
 import JWT from 'jsonwebtoken';
 
-export const generateToken = (id, isAdmin, expiresIn) => {
-  return JWT.sign({ id, isAdmin }, process.env.JWT_SECRET, { expiresIn });
+export const generateToken = (id, expiresIn) => {
+  return JWT.sign({ id }, process.env.JWT_SECRET, { expiresIn });
 };
 
 export const verifyToken = (token) => {

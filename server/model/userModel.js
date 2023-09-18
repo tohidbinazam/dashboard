@@ -14,7 +14,6 @@ const userModel = Schema(
     },
     number: {
       type: String,
-      unique: true,
     },
     password: {
       type: String,

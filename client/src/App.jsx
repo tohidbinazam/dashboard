@@ -22,9 +22,11 @@ function App() {
     dispatch(me());
   }
   useEffect(() => {
-    dispatch(getAllUser());
-    dispatch(getAllPermission());
-    dispatch(getAllRole());
+    if (cookie) {
+      dispatch(getAllUser());
+      dispatch(getAllPermission());
+      dispatch(getAllRole());
+    }
   }, [cookie, dispatch]);
 
   return (
