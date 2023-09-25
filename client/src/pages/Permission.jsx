@@ -17,7 +17,7 @@ const Permission = () => {
   const dispatch = useDispatch();
   const { permission, message, error } = useSelector(selectUser);
 
-  const { input, setInput, inputChange, clearFrom } = useInput({
+  const [input, setInput, inputChange, clearFrom] = useInput({
     name: '',
   });
 
@@ -72,7 +72,7 @@ const Permission = () => {
 
   useEffect(() => {
     new DataTable('#permissionTable');
-  }, []);
+  }, [dispatch]);
   return (
     <div className='page-wrapper'>
       <div className='content container-fluid'>

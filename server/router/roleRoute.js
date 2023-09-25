@@ -13,9 +13,6 @@ const router = express.Router();
 router.use(authMiddleware);
 
 router.route('/').get(getAllRoles).post(createRole);
-router.route('/').get(getAllRoles).post(createRole);
-router.route('/').get(getAllRoles).post(createRole);
-router.route('/').get(getAllRoles).post(createRole);
 router
   .route('/:id')
   .get(getRoleById)

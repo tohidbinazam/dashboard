@@ -62,6 +62,28 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
+            {permissions?.some((item) => item.name == 'Country') && (
+              <li
+                className={
+                  location.pathname == '/country' ? 'active' : undefined
+                }
+              >
+                <Link to='/country'>
+                  <i className='fe fe-layout'></i> <span>Country</span>
+                </Link>
+              </li>
+            )}
+            {permissions?.some((item) => item.name == 'AllFilter') && (
+              <li
+                className={
+                  location.pathname == '/allFilter' ? 'active' : undefined
+                }
+              >
+                <Link to='/allFilter'>
+                  <i className='fe fe-layout'></i> <span>AllFilter</span>
+                </Link>
+              </li>
+            )}
 
             {/* <li>
               <a href='patient-list.html'>

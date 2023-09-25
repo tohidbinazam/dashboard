@@ -13,7 +13,7 @@ const Role = () => {
   const dispatch = useDispatch();
   const { role, message, error, permission } = useSelector(selectUser);
 
-  const { input, setInput, inputChange, clearFrom } = useInput({
+  const [input, setInput, inputChange, clearFrom] = useInput({
     name: '',
     permissions: [],
   });

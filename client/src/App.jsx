@@ -12,6 +12,17 @@ import {
   getAllRole,
   getAllUser,
 } from './features/user/userApiSlice';
+import {
+  region,
+  country,
+  sector,
+  topic,
+  pestle,
+  end_year,
+  data,
+  label,
+} from './features/data/data';
+import { setDefaultData } from './features/data/dataSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +32,21 @@ function App() {
     dispatch(addToken());
     dispatch(me());
   }
+  useEffect(() => {
+    dispatch(
+      setDefaultData({
+        region,
+        country,
+        sector,
+        topic,
+        pestle,
+        end_year,
+        data,
+        label,
+      })
+    );
+  }, [dispatch]);
+
   useEffect(() => {
     if (cookie) {
       dispatch(getAllUser());

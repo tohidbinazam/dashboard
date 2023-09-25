@@ -19,7 +19,7 @@ const LOgin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!input.email && !input.password) {
+    if (!input.email || !input.password) {
       return toast.error('Please fill all the fields');
     }
     dispatch(loginUser(input));

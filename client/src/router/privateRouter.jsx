@@ -1,4 +1,6 @@
 import Layout from '../components/Layout';
+import AllFilter from '../pages/AllFilter';
+import Country from '../pages/Country';
 import Dashboard from '../pages/Dashboard';
 import Permission from '../pages/Permission';
 import Role from '../pages/Role';
@@ -27,6 +29,14 @@ const privateRouter = [
           {
             path: '/role',
             element: <Role />,
+          },
+          {
+            path: '/country',
+            element: <Country />,
+          },
+          {
+            path: '/allFilter',
+            element: <AllFilter />,
           },
         ],
       },

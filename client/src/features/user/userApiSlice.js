@@ -5,7 +5,7 @@ export const getAllPermission = createAsyncThunk(
   'user/getAllPermission',
   async () => {
     try {
-      const res = await axios.get('http://localhost:5050/api/v1/permission', {
+      const res = await axios.get('http://localhost:5000/api/v1/permission', {
         withCredentials: true,
       });
       return res.data;
@@ -20,7 +20,7 @@ export const addPermission = createAsyncThunk(
   async (data) => {
     try {
       const res = await axios.post(
-        'http://localhost:5050/api/v1/permission',
+        'http://localhost:5000/api/v1/permission',
         data,
         {
           withCredentials: true,
@@ -38,7 +38,7 @@ export const deletePermission = createAsyncThunk(
   async (id) => {
     try {
       const res = await axios.delete(
-        `http://localhost:5050/api/v1/permission/${id}`,
+        `http://localhost:5000/api/v1/permission/${id}`,
         {
           withCredentials: true,
         }
@@ -55,7 +55,7 @@ export const updatePermission = createAsyncThunk(
   async ({ id, data }) => {
     try {
       const res = await axios.patch(
-        `http://localhost:5050/api/v1/permission/${id}`,
+        `http://localhost:5000/api/v1/permission/${id}`,
         data,
         {
           withCredentials: true,
@@ -70,7 +70,7 @@ export const updatePermission = createAsyncThunk(
 
 export const getAllRole = createAsyncThunk('user/getAllRole', async () => {
   try {
-    const res = await axios.get('http://localhost:5050/api/v1/role', {
+    const res = await axios.get('http://localhost:5000/api/v1/role', {
       withCredentials: true,
     });
     return res.data;
@@ -81,7 +81,7 @@ export const getAllRole = createAsyncThunk('user/getAllRole', async () => {
 
 export const addRole = createAsyncThunk('user/addRole', async (data) => {
   try {
-    const res = await axios.post('http://localhost:5050/api/v1/role', data, {
+    const res = await axios.post('http://localhost:5000/api/v1/role', data, {
       withCredentials: true,
     });
     return res.data;
@@ -92,7 +92,7 @@ export const addRole = createAsyncThunk('user/addRole', async (data) => {
 
 export const deleteRole = createAsyncThunk('user/deleteRole', async (id) => {
   try {
-    const res = await axios.delete(`http://localhost:5050/api/v1/role/${id}`, {
+    const res = await axios.delete(`http://localhost:5000/api/v1/role/${id}`, {
       withCredentials: true,
     });
     return res.data;
@@ -106,7 +106,7 @@ export const updateRole = createAsyncThunk(
   async ({ id, data }) => {
     try {
       const res = await axios.patch(
-        `http://localhost:5050/api/v1/role/${id}`,
+        `http://localhost:5000/api/v1/role/${id}`,
         data,
         {
           withCredentials: true,
@@ -120,7 +120,7 @@ export const updateRole = createAsyncThunk(
 );
 export const getAllUser = createAsyncThunk('user/getAllUser', async () => {
   try {
-    const res = await axios.get('http://localhost:5050/api/v1/user', {
+    const res = await axios.get('http://localhost:5000/api/v1/user', {
       withCredentials: true,
     });
     return res.data;
@@ -131,7 +131,7 @@ export const getAllUser = createAsyncThunk('user/getAllUser', async () => {
 
 export const addUser = createAsyncThunk('user/addUser', async (data) => {
   try {
-    const res = await axios.post('http://localhost:5050/api/v1/user', data, {
+    const res = await axios.post('http://localhost:5000/api/v1/user', data, {
       withCredentials: true,
     });
     return res.data;
@@ -142,7 +142,7 @@ export const addUser = createAsyncThunk('user/addUser', async (data) => {
 
 export const deleteUser = createAsyncThunk('user/deleteUser', async (id) => {
   try {
-    const res = await axios.delete(`http://localhost:5050/api/v1/user/${id}`, {
+    const res = await axios.delete(`http://localhost:5000/api/v1/user/${id}`, {
       withCredentials: true,
     });
     return res.data;
@@ -156,7 +156,7 @@ export const updateUser = createAsyncThunk(
   async ({ id, data }) => {
     try {
       const res = await axios.patch(
-        `http://localhost:5050/api/v1/user/${id}`,
+        `http://localhost:5000/api/v1/user/${id}`,
         data,
         {
           withCredentials: true,
