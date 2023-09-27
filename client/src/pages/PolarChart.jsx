@@ -1,18 +1,14 @@
 import {
   Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Title,
+  RadialLinearScale,
+  ArcElement,
   Tooltip,
   Legend,
 } from 'chart.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearTotalData, selectData } from '../features/data/dataSlice';
 import { useEffect, useState } from 'react';
-import { Bar } from 'react-chartjs-2';
+import { PolarArea } from 'react-chartjs-2';
 import useInput from '../hooks/useInput';
 import { getAllData } from '../features/data/dataApiSlice';
 import {
@@ -25,24 +21,14 @@ import {
   data,
   label,
 } from '../features/data/data';
-import dynamicsDataSet from '../utils/dynamicsDataSet';
+import circularDataSet from '../utils/chart/circularDataSet';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
-const AllFilter = () => {
+const PolarChart = () => {
   const { allData, totalData, loading } = useSelector(selectData);
   const dispatch = useDispatch();
   const [chartData, setChartData] = useState(null);
-  const [chartOptions, setChartOptions] = useState(null);
 
   const [loadData, setLoadData, , clearData] = useInput({
     region,
@@ -64,25 +50,10 @@ const AllFilter = () => {
     end_year: '',
   });
 
-  const [chart, setChart, chartChange] = useInput({
-    data: ['intensity', 'likelihood'],
+  const [chart, , chartChange] = useInput({
+    data: 'intensity',
     label: 'source',
   });
-
-  const handleCheckbox = (e) => {
-    const { checked, value } = e.target;
-    if (checked) {
-      setChart((prev) => ({
-        ...prev,
-        data: [...prev.data, value],
-      }));
-    } else {
-      setChart((prev) => ({
-        ...prev,
-        data: prev.data.filter((item) => item !== value),
-      }));
-    }
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -96,26 +67,13 @@ const AllFilter = () => {
     dispatch(clearTotalData());
   };
 
-  const prepareChartData = (allData, chart, input) => {
+  const prepareChartData = (allData, chart) => {
     const data = {
       labels: allData.map((data) => data[chart.label]),
-      datasets: dynamicsDataSet(allData, chart.data),
+      datasets: circularDataSet(allData, chart.data),
     };
 
-    const options = {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-        },
-        title: {
-          display: true,
-          text: `${input.topic} of the ${input.country} in the ${input.pestle} sector`,
-        },
-      },
-    };
     setChartData(data);
-    setChartOptions(options);
     return;
   };
 
@@ -125,7 +83,6 @@ const AllFilter = () => {
       prepareChartData(allData, chart, input);
     } else {
       setChartData(null);
-      setChartOptions(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allData, chart]);
@@ -300,20 +257,24 @@ const AllFilter = () => {
                     <div className='col-6 col-sm-6'>
                       <div className='form-group mt-2'>
                         <label className='me-3'>Chart Data |</label>
-                        {data?.map((item, index) => (
+                        {data?.map((item) => (
                           <div
-                            key={index}
+                            key={item.slug}
                             className='form-check form-check-inline'
                           >
                             <input
                               className='form-check-input'
-                              type='checkbox'
+                              type='radio'
+                              name='data'
                               value={item.slug}
-                              id={index}
-                              checked={chart.data?.includes(item.slug)}
-                              onChange={handleCheckbox}
+                              id={item.slug}
+                              checked={chart.data == item.slug ? true : false}
+                              onChange={chartChange}
                             />
-                            <label className='form-check-label' htmlFor={index}>
+                            <label
+                              className='form-check-label'
+                              htmlFor={item.slug}
+                            >
                               {item.name}
                             </label>
                           </div>
@@ -362,9 +323,11 @@ const AllFilter = () => {
             <div className='card'>
               <div className='card-body'>
                 {chartData ? (
-                  <Bar options={chartOptions} data={chartData} />
+                  <PolarArea data={chartData} />
                 ) : (
-                  <div>{loading ? 'Loading...' : 'No data available.'}</div>
+                  <div>
+                    {allData || loading ? 'Loading...' : 'No data available.'}
+                  </div>
                 )}
               </div>
             </div>
@@ -375,4 +338,4 @@ const AllFilter = () => {
   );
 };
 
-export default AllFilter;
+export default PolarChart;

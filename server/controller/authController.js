@@ -57,10 +57,9 @@ export const me = asyncHandler(async (req, res) => {
   const user = await User.findById(id)
     .populate({
       path: 'role',
-      select: 'name',
       populate: {
         path: 'permissions',
-        select: 'name',
+        select: 'name, slug',
       },
     })
     .select('-password');

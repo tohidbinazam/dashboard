@@ -22,18 +22,18 @@ const Navbar = () => {
                 }
               >
                 <Link to={`/${permission.slug}`}>
-                  <i className='fe fe-home'></i> <span>{permission.name}</span>
+                  <i className='fe fe-home'></i> <span>{permission.slug}</span>
                 </Link>
               </li>
             ))} */}
-            {permissions?.some((item) => item.name == 'Dashboard') && (
+            {permissions?.some((item) => item.slug == 'dashboard') && (
               <li className={location.pathname == '/' ? 'active' : undefined}>
                 <Link to='/'>
                   <i className='fe fe-home'></i> <span>Dashboard</span>
                 </Link>
               </li>
             )}
-            {permissions?.some((item) => item.name == 'User') && (
+            {permissions?.some((item) => item.slug == 'user') && (
               <li
                 className={location.pathname == '/user' ? 'active' : undefined}
               >
@@ -42,7 +42,7 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
-            {permissions?.some((item) => item.name == 'Role') && (
+            {permissions?.some((item) => item.slug == 'role') && (
               <li
                 className={location.pathname == '/role' ? 'active' : undefined}
               >
@@ -51,7 +51,7 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
-            {permissions?.some((item) => item.name == 'Permission') && (
+            {permissions?.some((item) => item.slug == 'permission') && (
               <li
                 className={
                   location.pathname == '/permission' ? 'active' : undefined
@@ -62,28 +62,82 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
-            {permissions?.some((item) => item.name == 'Country') && (
+            {permissions?.some((item) => item.slug == 'bar-chart') && (
               <li
                 className={
-                  location.pathname == '/country' ? 'active' : undefined
+                  location.pathname == '/bar-chart' ? 'active' : undefined
                 }
               >
-                <Link to='/country'>
-                  <i className='fe fe-layout'></i> <span>Country</span>
+                <Link to='/bar-chart'>
+                  <i className='fe fe-layout'></i> <span>Bar Chart</span>
                 </Link>
               </li>
             )}
-            {permissions?.some((item) => item.name == 'AllFilter') && (
-              <li
-                className={
-                  location.pathname == '/allFilter' ? 'active' : undefined
-                }
-              >
-                <Link to='/allFilter'>
-                  <i className='fe fe-layout'></i> <span>AllFilter</span>
-                </Link>
-              </li>
-            )}
+            <li
+              className={
+                location.pathname == '/area-chart' ? 'active' : undefined
+              }
+            >
+              <Link to='/area-chart'>
+                <i className='fe fe-layout'></i> <span>Area Chart</span>
+              </Link>
+            </li>
+
+            <li
+              className={
+                location.pathname == '/line-chart' ? 'active' : undefined
+              }
+            >
+              <Link to='/line-chart'>
+                <i className='fe fe-layout'></i> <span>Line Chart</span>
+              </Link>
+            </li>
+
+            <li
+              className={
+                location.pathname == '/pie-chart' ? 'active' : undefined
+              }
+            >
+              <Link to='/pie-chart'>
+                <i className='fe fe-layout'></i> <span>Pie Chart</span>
+              </Link>
+            </li>
+            <li
+              className={
+                location.pathname == '/doughnut-chart' ? 'active' : undefined
+              }
+            >
+              <Link to='/doughnut-chart'>
+                <i className='fe fe-layout'></i> <span>Doughnut Chart</span>
+              </Link>
+            </li>
+            <li
+              className={
+                location.pathname == '/polar-chart' ? 'active' : undefined
+              }
+            >
+              <Link to='/polar-chart'>
+                <i className='fe fe-layout'></i> <span>Polar Area Chart</span>
+              </Link>
+            </li>
+            <li
+              className={
+                location.pathname == '/radar-chart' ? 'active' : undefined
+              }
+            >
+              <Link to='/radar-chart'>
+                <i className='fe fe-layout'></i> <span>Radar Chart</span>
+              </Link>
+            </li>
+            <li
+              className={
+                location.pathname == '/stacked-bar-chart' ? 'active' : undefined
+              }
+            >
+              <Link to='/stacked-bar-chart'>
+                <i className='fe fe-layout'></i> <span>Stacked Bar Chart</span>
+              </Link>
+            </li>
 
             {/* <li>
               <a href='patient-list.html'>
