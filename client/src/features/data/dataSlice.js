@@ -7,8 +7,10 @@ const dataSlice = createSlice({
     allData: null,
     totalData: null,
     defaultData: null,
+    inputs: null,
     loading: false,
     error: null,
+    tempData: null,
   },
   reducers: {
     setDefaultData: (state, { payload }) => {
@@ -16,6 +18,9 @@ const dataSlice = createSlice({
     },
     clearTotalData: (state) => {
       state.totalData = state.defaultData;
+    },
+    addTempData: (state, { payload }) => {
+      state.tempData = payload;
     },
   },
   extraReducers: (builder) => {
@@ -29,7 +34,8 @@ const dataSlice = createSlice({
       })
       .addCase(getAllData.fulfilled, (state, { payload }) => {
         state.allData = payload.data;
-        state.totalData = payload.totalData;
+        state.inputs = payload.keysWithData;
+        state.totalData = { ...payload.totalData, ...state.tempData };
         state.loading = false;
       });
   },
@@ -37,6 +43,7 @@ const dataSlice = createSlice({
 
 export const selectData = (state) => state.data;
 
-export const { setDefaultData, clearTotalData } = dataSlice.actions;
+export const { setDefaultData, clearTotalData, addTempData } =
+  dataSlice.actions;
 
 export default dataSlice.reducer;

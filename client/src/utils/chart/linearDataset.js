@@ -8,11 +8,11 @@ const linearDataset = (allData, data, fill = false) => {
     'rgba(255, 206, 86, 0.5)',
   ];
   const borderColor = [
-    'rgb(53, 162, 235)',
-    'rgb(255, 99, 132)',
-    'rgb(255, 159, 64)',
-    'rgb(75, 192, 192)',
-    'rgba(255, 206, 86)',
+    'rgb(53, 162, 235,1)',
+    'rgb(255, 99, 132,1)',
+    'rgb(255, 159, 64,1)',
+    'rgb(75, 192, 192,1)',
+    'rgba(255, 206, 86,1)',
   ];
   data.forEach((element, index) => {
     newData.push({

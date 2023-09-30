@@ -1,6 +1,10 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearTotalData, selectData } from '../features/data/dataSlice';
+import {
+  addTempData,
+  clearTotalData,
+  selectData,
+} from '../features/data/dataSlice';
 import { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import useInput from '../hooks/useInput';
@@ -20,7 +24,7 @@ import circularDataSet from '../utils/chart/circularDataSet';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = () => {
-  const { allData, totalData, loading } = useSelector(selectData);
+  const { allData, totalData, inputs, loading } = useSelector(selectData);
   const dispatch = useDispatch();
   const [chartData, setChartData] = useState(null);
 
@@ -35,7 +39,7 @@ const PieChart = () => {
     label,
   });
 
-  const [input, , inputChange, clearFrom] = useInput({
+  const [input, setInput, inputChange, clearFrom] = useInput({
     region: '',
     country: '',
     sector: '',
@@ -52,6 +56,7 @@ const PieChart = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     inputChange(e);
+    dispatch(addTempData({ [e.target.name]: loadData[e.target.name] }));
     dispatch(getAllData({ ...input, [e.target.name]: e.target.value }));
   };
 
@@ -74,6 +79,7 @@ const PieChart = () => {
   useEffect(() => {
     if (allData && allData.length > 0) {
       setLoadData(totalData);
+      setInput((prev) => ({ ...prev, ...inputs }));
       prepareChartData(allData, chart, input);
     } else {
       setChartData(null);

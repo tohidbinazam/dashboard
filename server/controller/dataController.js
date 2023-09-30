@@ -32,7 +32,7 @@ export const getAllData = expressAsyncHandler(async (req, res) => {
     });
   });
 
-  res.status(200).json({ data, totalData });
+  res.status(200).json({ data, totalData, keysWithData });
 });
 
 export const getFieldData = expressAsyncHandler(async (req, res) => {

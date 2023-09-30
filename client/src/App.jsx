@@ -32,26 +32,24 @@ function App() {
     dispatch(addToken());
     dispatch(me());
   }
-  useEffect(() => {
-    dispatch(
-      setDefaultData({
-        region,
-        country,
-        sector,
-        topic,
-        pestle,
-        end_year,
-        data,
-        label,
-      })
-    );
-  }, [dispatch]);
 
   useEffect(() => {
     if (cookie) {
       dispatch(getAllUser());
       dispatch(getAllPermission());
       dispatch(getAllRole());
+      dispatch(
+        setDefaultData({
+          region,
+          country,
+          sector,
+          topic,
+          pestle,
+          end_year,
+          data,
+          label,
+        })
+      );
     }
   }, [cookie, dispatch]);
 

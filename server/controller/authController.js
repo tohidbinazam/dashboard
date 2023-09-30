@@ -22,10 +22,9 @@ export const login = asyncHandler(async (req, res) => {
 
   const data = await User.findOne({ email }).populate({
     path: 'role',
-    select: 'name',
     populate: {
       path: 'permissions',
-      select: 'name',
+      select: 'name slug status',
     },
   });
 
@@ -59,7 +58,7 @@ export const me = asyncHandler(async (req, res) => {
       path: 'role',
       populate: {
         path: 'permissions',
-        select: 'name, slug',
+        select: 'name slug status',
       },
     })
     .select('-password');

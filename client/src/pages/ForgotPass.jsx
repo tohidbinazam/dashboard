@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/img/logo-white.png';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearMsg } from '../features/auth/authSlice';
 import { toast } from 'react-toastify';
@@ -8,7 +8,17 @@ import { toast } from 'react-toastify';
 const ForgotPass = () => {
   const dispatch = useDispatch();
   const { message, error } = useSelector((state) => state.auth);
+  const [input, setInput] = useState({
+    email: '',
+  });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!input.email) {
+      return toast.error('Email is required');
+    }
+    toast.success('Check your email');
+  };
   useEffect(() => {
     if (message) {
       toast.success(message);
@@ -33,11 +43,14 @@ const ForgotPass = () => {
                 <h1>Forgot Password</h1>
                 <p className='account-subtitle'>Access to our dashboard</p>
 
-                <form action='https://doccure.dreamguystech.com/html/template/admin/index.html'>
+                <form onSubmit={handleSubmit}>
                   <div className='form-group'>
                     <input
                       className='form-control'
-                      type='text'
+                      name='email'
+                      type='email'
+                      value={input.email}
+                      onChange={(e) => setInput({ email: e.target.value })}
                       placeholder='Email'
                     />
                   </div>

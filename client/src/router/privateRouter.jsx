@@ -57,7 +57,7 @@ const privateRouter = [
             element: <DoughnutChart />,
           },
           {
-            path: '/polar-chart',
+            path: '/polar-area-chart',
             element: <PolarChart />,
           },
           {

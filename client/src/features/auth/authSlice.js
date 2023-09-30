@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginUser, me, registerUser } from './authApiSlice';
+import { loginUser, me, registerUser, userLogout } from './authApiSlice';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -62,6 +62,18 @@ const authSlice = createSlice({
         state.permissions = payload.role.permissions;
       })
       .addCase(me.rejected, (state, action) => {
+        state.loading = false;
+        state.token = false;
+        state.error = action.error.message;
+      })
+      .addCase(userLogout.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.token = false;
+        state.user = null;
+        state.permissions = null;
+        state.message = payload.message;
+      })
+      .addCase(userLogout.rejected, (state, action) => {
         state.loading = false;
         state.token = false;
         state.error = action.error.message;

@@ -8,7 +8,11 @@ import {
   Legend,
 } from 'chart.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearTotalData, selectData } from '../features/data/dataSlice';
+import {
+  addTempData,
+  clearTotalData,
+  selectData,
+} from '../features/data/dataSlice';
 import { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import useInput from '../hooks/useInput';
@@ -35,7 +39,7 @@ ChartJS.register(
 );
 
 const BarChart = () => {
-  const { allData, totalData, loading } = useSelector(selectData);
+  const { allData, totalData, inputs, loading } = useSelector(selectData);
   const dispatch = useDispatch();
   const [chartData, setChartData] = useState(null);
   const [chartOptions, setChartOptions] = useState(null);
@@ -51,7 +55,7 @@ const BarChart = () => {
     label,
   });
 
-  const [input, , inputChange, clearFrom] = useInput({
+  const [input, setInput, inputChange, clearFrom] = useInput({
     region: '',
     country: '',
     sector: '',
@@ -83,6 +87,7 @@ const BarChart = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     inputChange(e);
+    dispatch(addTempData({ [e.target.name]: loadData[e.target.name] }));
     dispatch(getAllData({ ...input, [e.target.name]: e.target.value }));
   };
 
@@ -118,6 +123,7 @@ const BarChart = () => {
   useEffect(() => {
     if (allData && allData.length > 0) {
       setLoadData(totalData);
+      setInput((prev) => ({ ...prev, ...inputs }));
       prepareChartData(allData, chart, input);
     } else {
       setChartData(null);

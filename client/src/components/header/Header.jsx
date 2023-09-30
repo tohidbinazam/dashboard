@@ -1,22 +1,17 @@
-import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
 import logo from '../../assets/img/logo.png';
 import smallLogo from '../../assets/img/logo-small.png';
-import photo from '../../assets/img/profiles/avatar-02.jpg';
-import doctor from '../../assets/img/doctors/doctor-thumb-02.jpg';
+import photo from '../../assets/img/profiles/avatar-01.jpg';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../features/auth/authSlice';
+import { userLogout } from '../../features/auth/authApiSlice';
 
-const Header = () => {
+// eslint-disable-next-line react/prop-types
+const Header = ({ handleNav }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 
   const handleLogout = (e) => {
     e.preventDefault();
-    Cookies.remove('token');
-    dispatch(logout());
-    navigate('/login');
+    dispatch(userLogout());
   };
 
   return (
@@ -30,145 +25,11 @@ const Header = () => {
         </a>
       </div>
 
-      <a href='' id='toggle_btn'>
+      <a href='#' onClick={handleNav} id='toggle_btn'>
         <i className='fe fe-text-align-left'></i>
-      </a>
-      <div className='top-nav-search'>
-        <form>
-          <input
-            type='text'
-            className='form-control'
-            placeholder='Search here'
-          />
-          <button className='btn' type='submit'>
-            <i className='fa fa-search'></i>
-          </button>
-        </form>
-      </div>
-
-      <a className='mobile_btn' id='mobile_btn'>
-        <i className='fa fa-bars'></i>
       </a>
 
       <ul className='nav user-menu'>
-        <li className='nav-item dropdown noti-dropdown'>
-          <a
-            href='#'
-            className='dropdown-toggle nav-link'
-            data-bs-toggle='dropdown'
-          >
-            <i className='fe fe-bell'></i>
-            <span className='badge rounded-pill'>3</span>
-          </a>
-          <div className='dropdown-menu notifications'>
-            <div className='topnav-dropdown-header'>
-              <span className='notification-title'>Notifications</span>
-              <a href='javascript:void(0)' className='clear-noti'>
-                Clear All
-              </a>
-            </div>
-            <div className='noti-content'>
-              <ul className='notification-list'>
-                <li className='notification-message'>
-                  <a href='#'>
-                    <div className='media d-flex'>
-                      <span className='avatar avatar-sm flex-shrink-0'>
-                        <img
-                          className='avatar-img rounded-circle'
-                          alt='User Image'
-                          src={doctor}
-                        />
-                      </span>
-                      <div className='media-body flex-grow-1'>
-                        <p className='noti-details'>
-                          <span className='noti-title'>Dr. Ruby Perrin</span>
-                          Schedule
-                          <span className='noti-title'>her appointment</span>
-                        </p>
-                        <p className='noti-time'>
-                          <span className='notification-time'>4 mins ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li className='notification-message'>
-                  <a href='#'>
-                    <div className='media d-flex'>
-                      <span className='avatar avatar-sm flex-shrink-0'>
-                        <img
-                          className='avatar-img rounded-circle'
-                          alt='User Image'
-                          src={doctor}
-                        />
-                      </span>
-                      <div className='media-body flex-grow-1'>
-                        <p className='noti-details'>
-                          <span className='noti-title'>Charlene Reed</span> has
-                          booked her appointment to
-                          <span className='noti-title'>Dr. Ruby Perrin</span>
-                        </p>
-                        <p className='noti-time'>
-                          <span className='notification-time'>6 mins ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li className='notification-message'>
-                  <a href='#'>
-                    <div className='media d-flex'>
-                      <span className='avatar avatar-sm flex-shrink-0'>
-                        <img
-                          className='avatar-img rounded-circle'
-                          alt='User Image'
-                          src={doctor}
-                        />
-                      </span>
-                      <div className='media-body flex-grow-1'>
-                        <p className='noti-details'>
-                          <span className='noti-title'>Travis Trimble</span>{' '}
-                          sent a amount of $210 for his
-                          <span className='noti-title'>appointment</span>
-                        </p>
-                        <p className='noti-time'>
-                          <span className='notification-time'>8 mins ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li className='notification-message'>
-                  <a href='#'>
-                    <div className='media d-flex'>
-                      <span className='avatar avatar-sm flex-shrink-0'>
-                        <img
-                          className='avatar-img rounded-circle'
-                          alt='User Image'
-                          src={doctor}
-                        />
-                      </span>
-                      <div className='media-body flex-grow-1'>
-                        <p className='noti-details'>
-                          <span className='noti-title'>Carl Kelly</span> send a
-                          message
-                          <span className='noti-title'> to his doctor</span>
-                        </p>
-                        <p className='noti-time'>
-                          <span className='notification-time'>12 mins ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className='topnav-dropdown-footer'>
-              <a href='#'>View all Notifications</a>
-            </div>
-          </div>
-        </li>
-
         <li className='nav-item dropdown has-arrow'>
           <a
             href='#'
@@ -195,14 +56,14 @@ const Header = () => {
                 />
               </div>
               <div className='user-text'>
-                <h6>{user && user.name}</h6>
-                <p className='text-muted mb-0'>Administrator</p>
+                <h6>{user?.name}</h6>
+                <p className='text-muted mb-0'>{user?.role.name}</p>
               </div>
             </div>
-            <a className='dropdown-item' href='profile.html'>
+            <a className='dropdown-item' href='#'>
               My Profile
             </a>
-            <a className='dropdown-item' href='settings.html'>
+            <a className='dropdown-item' href='#'>
               Settings
             </a>
             <a className='dropdown-item' onClick={handleLogout} to='/login'>

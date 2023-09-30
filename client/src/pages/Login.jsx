@@ -12,7 +12,7 @@ const LOgin = () => {
 
   const { message, error } = useSelector((state) => state.auth);
 
-  const { input, inputChange } = useInput({
+  const [input, , inputChange] = useInput({
     email: '',
     password: '',
   });
@@ -25,12 +25,17 @@ const LOgin = () => {
     dispatch(loginUser(input));
   };
 
+  if (message) {
+    toast.success(message);
+    dispatch(clearMsg());
+  }
+
   useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearMsg());
     }
-  }, [dispatch, error, message]);
+  }, [dispatch, error]);
 
   return (
     <div className='main-wrapper login-body'>
@@ -44,6 +49,12 @@ const LOgin = () => {
               <div className='login-right-wrap'>
                 <h1>Login</h1>
                 <p className='account-subtitle'>Access to our dashboard</p>
+                <div className='d-flex justify-content-center flex-column align-items-center'>
+                  <span className='badge badge-info '>
+                    Email: tohidbinazam007@gmail.com
+                  </span>
+                  <span className='badge badge-info my-2'>password: qwer</span>
+                </div>
 
                 <form onSubmit={handleSubmit}>
                   <div className='form-group'>
