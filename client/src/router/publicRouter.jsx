@@ -1,5 +1,5 @@
 import ForgotPass from '../pages/ForgotPass';
-import LOgin from '../pages/LOgin';
+import Login from '../pages/Login';
 import Register from '../pages/Register';
 import PublicGard from './gard/PublicGard';
 
@@ -9,7 +9,7 @@ const PublicRouter = [
     children: [
       {
         path: '/login',
-        element: <LOgin />,
+        element: <Login />,
       },
       {
         path: '/register',

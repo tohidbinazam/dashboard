@@ -7,7 +7,7 @@ export const registerUser = createAsyncThunk(
   async (data) => {
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/v1/auth/register',
+        'https://dashboard-oubj.onrender.com/api/v1/auth/register',
         data
       );
       return res.data;
@@ -21,7 +21,7 @@ export const loginUser = createAsyncThunk(
   async (data, { dispatch }) => {
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/v1/auth/login',
+        'https://dashboard-oubj.onrender.com/api/v1/auth/login',
         data,
         {
           withCredentials: true,
@@ -41,9 +41,12 @@ export const loginUser = createAsyncThunk(
 
 export const me = createAsyncThunk('auth/me', async () => {
   try {
-    const res = await axios.get('http://localhost:5000/api/v1/auth/me', {
-      withCredentials: true,
-    });
+    const res = await axios.get(
+      'https://dashboard-oubj.onrender.com/api/v1/auth/me',
+      {
+        withCredentials: true,
+      }
+    );
     return res.data;
   } catch (error) {
     throw new Error(error.response.data.message);
@@ -52,9 +55,12 @@ export const me = createAsyncThunk('auth/me', async () => {
 
 export const userLogout = createAsyncThunk('auth/userLogout', async () => {
   try {
-    const res = await axios.get('http://localhost:5000/api/v1/auth/logout', {
-      withCredentials: true,
-    });
+    const res = await axios.get(
+      'https://dashboard-oubj.onrender.com/api/v1/auth/logout',
+      {
+        withCredentials: true,
+      }
+    );
     return res.data;
   } catch (error) {
     throw new Error(error.response.data.message);

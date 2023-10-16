@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { clearMsg } from '../features/auth/authSlice';
 
-const LOgin = () => {
+const Login = () => {
   const dispatch = useDispatch();
 
   const { message, error } = useSelector((state) => state.auth);
@@ -105,4 +105,4 @@ const LOgin = () => {
   );
 };
 
-export default LOgin;
+export default Login;
