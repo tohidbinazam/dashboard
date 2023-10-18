@@ -1024,6 +1024,7 @@ textarea.form-control {
   align-items: center;
   border-top: 1px solid #e3e3e3;
   padding: 10px 15px;
+  cursor: pointer;
 }
 .user-menu .dropdown-menu .dropdown-item:hover {
   color: #ffffff;

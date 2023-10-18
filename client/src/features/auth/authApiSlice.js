@@ -1,15 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import api from '../../utils/api';
 import { getAllPermission, getAllRole, getAllUser } from '../user/userApiSlice';
 
 export const registerUser = createAsyncThunk(
   'auth/registerUser',
   async (data) => {
     try {
-      const res = await axios.post(
-        'https://dashboard-oubj.onrender.com/api/v1/auth/register',
-        data
-      );
+      const res = await api.post('/auth/register', data);
       return res.data;
     } catch (error) {
       throw new Error(error.response.data.message);
@@ -20,13 +17,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (data, { dispatch }) => {
     try {
-      const res = await axios.post(
-        'https://dashboard-oubj.onrender.com/api/v1/auth/login',
-        data,
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await api.post('/auth/login', data);
       if (res.data) {
         dispatch(getAllUser());
         dispatch(getAllPermission());
@@ -41,12 +32,7 @@ export const loginUser = createAsyncThunk(
 
 export const me = createAsyncThunk('auth/me', async () => {
   try {
-    const res = await axios.get(
-      'https://dashboard-oubj.onrender.com/api/v1/auth/me',
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await api.get('/auth/me');
     return res.data;
   } catch (error) {
     throw new Error(error.response.data.message);
@@ -55,12 +41,7 @@ export const me = createAsyncThunk('auth/me', async () => {
 
 export const userLogout = createAsyncThunk('auth/userLogout', async () => {
   try {
-    const res = await axios.get(
-      'https://dashboard-oubj.onrender.com/api/v1/auth/logout',
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await api.get('/auth/logout');
     return res.data;
   } catch (error) {
     throw new Error(error.response.data.message);

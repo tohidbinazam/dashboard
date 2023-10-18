@@ -1,16 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+
+import api from '../../utils/api';
 
 export const getAllPermission = createAsyncThunk(
   'user/getAllPermission',
   async () => {
     try {
-      const res = await axios.get(
-        'https://dashboard-oubj.onrender.com/api/v1/permission',
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await api.get('/permission');
       return res.data;
     } catch (error) {
       throw new Error(error.response.data.message);
@@ -22,13 +18,7 @@ export const addPermission = createAsyncThunk(
   'user/addPermission',
   async (data) => {
     try {
-      const res = await axios.post(
-        'https://dashboard-oubj.onrender.com/api/v1/permission',
-        data,
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await api.post('/permission', data);
       return res.data;
     } catch (error) {
       throw new Error(error.response.data.message);
@@ -40,11 +30,8 @@ export const deletePermission = createAsyncThunk(
   'user/deletePermission',
   async (id) => {
     try {
-      const res = await axios.delete(
-        `https://dashboard-oubj.onrender.com/api/v1/permission/${id}`,
-        {
-          withCredentials: true,
-        }
+      const res = await api.delete(
+        `https://dashboard-oubj.onrender.com/api/v1/permission/${id}`
       );
       return res.data;
     } catch (error) {
@@ -57,12 +44,9 @@ export const updatePermission = createAsyncThunk(
   'user/updatePermission',
   async ({ id, data }) => {
     try {
-      const res = await axios.patch(
+      const res = await api.patch(
         `https://dashboard-oubj.onrender.com/api/v1/permission/${id}`,
-        data,
-        {
-          withCredentials: true,
-        }
+        data
       );
       return res.data;
     } catch (error) {
@@ -73,12 +57,7 @@ export const updatePermission = createAsyncThunk(
 
 export const getAllRole = createAsyncThunk('user/getAllRole', async () => {
   try {
-    const res = await axios.get(
-      'https://dashboard-oubj.onrender.com/api/v1/role',
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await api.get('/role');
     return res.data;
   } catch (error) {
     throw new Error(error.response.data.message);
@@ -87,13 +66,7 @@ export const getAllRole = createAsyncThunk('user/getAllRole', async () => {
 
 export const addRole = createAsyncThunk('user/addRole', async (data) => {
   try {
-    const res = await axios.post(
-      'https://dashboard-oubj.onrender.com/api/v1/role',
-      data,
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await api.post('/role', data);
     return res.data;
   } catch (error) {
     throw new Error(error.response.data.message);
@@ -102,11 +75,8 @@ export const addRole = createAsyncThunk('user/addRole', async (data) => {
 
 export const deleteRole = createAsyncThunk('user/deleteRole', async (id) => {
   try {
-    const res = await axios.delete(
-      `https://dashboard-oubj.onrender.com/api/v1/role/${id}`,
-      {
-        withCredentials: true,
-      }
+    const res = await api.delete(
+      `https://dashboard-oubj.onrender.com/api/v1/role/${id}`
     );
     return res.data;
   } catch (error) {
@@ -118,12 +88,9 @@ export const updateRole = createAsyncThunk(
   'user/updateRole',
   async ({ id, data }) => {
     try {
-      const res = await axios.patch(
+      const res = await api.patch(
         `https://dashboard-oubj.onrender.com/api/v1/role/${id}`,
-        data,
-        {
-          withCredentials: true,
-        }
+        data
       );
       return res.data;
     } catch (error) {
@@ -133,12 +100,7 @@ export const updateRole = createAsyncThunk(
 );
 export const getAllUser = createAsyncThunk('user/getAllUser', async () => {
   try {
-    const res = await axios.get(
-      'https://dashboard-oubj.onrender.com/api/v1/user',
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await api.get('/user');
     return res.data;
   } catch (error) {
     throw new Error(error.response.data.message);
@@ -147,13 +109,7 @@ export const getAllUser = createAsyncThunk('user/getAllUser', async () => {
 
 export const addUser = createAsyncThunk('user/addUser', async (data) => {
   try {
-    const res = await axios.post(
-      'https://dashboard-oubj.onrender.com/api/v1/user',
-      data,
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await api.post('/user', data);
     return res.data;
   } catch (error) {
     throw new Error(error.response.data.message);
@@ -162,11 +118,8 @@ export const addUser = createAsyncThunk('user/addUser', async (data) => {
 
 export const deleteUser = createAsyncThunk('user/deleteUser', async (id) => {
   try {
-    const res = await axios.delete(
-      `https://dashboard-oubj.onrender.com/api/v1/user/${id}`,
-      {
-        withCredentials: true,
-      }
+    const res = await api.delete(
+      `https://dashboard-oubj.onrender.com/api/v1/user/${id}`
     );
     return res.data;
   } catch (error) {
@@ -178,12 +131,9 @@ export const updateUser = createAsyncThunk(
   'user/updateUser',
   async ({ id, data }) => {
     try {
-      const res = await axios.patch(
+      const res = await api.patch(
         `https://dashboard-oubj.onrender.com/api/v1/user/${id}`,
-        data,
-        {
-          withCredentials: true,
-        }
+        data
       );
       return res.data;
     } catch (error) {

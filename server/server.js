@@ -20,7 +20,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: [process.env.DOMAIN],
+    origin: [process.env.DOMAIN.split(',')],
     credentials: true,
   })
 );
