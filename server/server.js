@@ -9,9 +9,12 @@ import roleRoute from './router/roleRoute.js';
 import permissionRoute from './router/permissionRoute.js';
 import dataRoute from './router/dataRoute.js';
 import errorHandler from './utility/errorHandler.js';
+import path from 'path';
 
 dotenv.config();
 mongoDB();
+
+const __dirname = path.resolve();
 
 const port = process.env.PORT || 5050;
 
@@ -35,6 +38,14 @@ app.use('/api/v1/permission', permissionRoute);
 app.use('/api/v1/data', dataRoute);
 
 app.use(errorHandler);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/client/dist')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'))
+  );
+}
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

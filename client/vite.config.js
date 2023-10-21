@@ -9,5 +9,11 @@ export default defineConfig({
     hmr: {
       overlay: false,
     },
+    proxy: {
+      '/api/v1': {
+        target: 'http://localhost:5000',
+        secure: false,
+      },
+    },
   },
 });
