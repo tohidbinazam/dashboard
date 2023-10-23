@@ -6,7 +6,7 @@ Just copy the link and past it in your browser address bar,
 https://doccure-dashboard.onrender.com/
 ```
 
-## How to run this project on local machine?
+## How to run this project on the local machine?
 
 `Recommended terminal: git bash`
 
@@ -19,7 +19,7 @@ git clone https://github.com/tohidbinazam/dashboard.git
 Note: Copy any code and just right-click on the mouse in your terminal,  
 Result: Auto past it.
 
-### 2. Open the terminal in the project root folder 'Instagram' and run those commands
+### 2. Open the terminal in the project root folder 'dashboard' and run those commands
 
 ```HTML
 cd client
@@ -28,13 +28,13 @@ touch .env
 start .env
 ```
 
-and past the bellow code in .env file 👇
+and past the bellow code in the .env file 👇
 
 ```HTML
 VITE_API_VERSION = /api/v1
 ```
 
-### 3. Go the project root folder and create a file, named '.env' by using this command
+### 3. Go to the project root folder and create a file, named '.env' by using this command
 
 ```HTML
 cd ..
