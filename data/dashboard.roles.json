@@ -1,0 +1,129 @@
+[{
+  "_id": {
+    "$oid": "65070f7712d8f38441349fc1"
+  },
+  "name": "Admin",
+  "permissions": [
+    {
+      "$oid": "65070d1012d8f38441349fbe"
+    },
+    {
+      "$oid": "65070d0912d8f38441349fbb"
+    },
+    {
+      "$oid": "65070cf612d8f38441349fb8"
+    },
+    {
+      "$oid": "65070ced12d8f38441349fb5"
+    },
+    {
+      "$oid": "65120c4b3818cfa4411f61be"
+    },
+    {
+      "$oid": "651349dfa1fa67449cfc0abc"
+    },
+    {
+      "$oid": "651349eda1fa67449cfc0abf"
+    },
+    {
+      "$oid": "65134a11a1fa67449cfc0ac8"
+    },
+    {
+      "$oid": "651349f8a1fa67449cfc0ac2"
+    },
+    {
+      "$oid": "65134a1ea1fa67449cfc0acb"
+    },
+    {
+      "$oid": "65134a27a1fa67449cfc0ace"
+    },
+    {
+      "$oid": "65134a01a1fa67449cfc0ac5"
+    }
+  ],
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-17T14:38:47.754Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T21:22:33.673Z"
+  },
+  "slug": "admin",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6507118d12d8f38441349fc6"
+  },
+  "name": "Author",
+  "permissions": [
+    {
+      "$oid": "65070ced12d8f38441349fb5"
+    },
+    {
+      "$oid": "65070cf612d8f38441349fb8"
+    },
+    {
+      "$oid": "65182a4e99b39bc84c93e1c6"
+    }
+  ],
+  "status": false,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-17T14:47:41.990Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-08T05:43:02.272Z"
+  },
+  "slug": "author",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650711ac12d8f38441349fcb"
+  },
+  "name": "Editor",
+  "permissions": [
+    {
+      "$oid": "65070ced12d8f38441349fb5"
+    },
+    {
+      "$oid": "65070cf612d8f38441349fb8"
+    },
+    {
+      "$oid": "65070d1012d8f38441349fbe"
+    }
+  ],
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-17T14:48:12.146Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-08T05:42:57.540Z"
+  },
+  "slug": "editor",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650711bb12d8f38441349fd0"
+  },
+  "name": "User",
+  "permissions": [
+    {
+      "$oid": "65070ced12d8f38441349fb5"
+    }
+  ],
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-17T14:48:27.344Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-17T14:48:27.344Z"
+  },
+  "slug": "user",
+  "__v": 0
+}]

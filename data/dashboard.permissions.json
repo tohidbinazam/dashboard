@@ -1,0 +1,192 @@
+[{
+  "_id": {
+    "$oid": "65070ced12d8f38441349fb5"
+  },
+  "name": "Dashboard",
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-17T14:27:57.910Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-18T07:25:17.949Z"
+  },
+  "slug": "dashboard",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65070cf612d8f38441349fb8"
+  },
+  "name": "User",
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-17T14:28:06.908Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-18T07:12:51.857Z"
+  },
+  "slug": "user",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65070d0912d8f38441349fbb"
+  },
+  "name": "Permission",
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-17T14:28:25.378Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-17T14:28:25.378Z"
+  },
+  "slug": "permission",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65070d1012d8f38441349fbe"
+  },
+  "name": "Role",
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-17T14:28:32.894Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-17T14:28:32.894Z"
+  },
+  "slug": "role",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65120c4b3818cfa4411f61be"
+  },
+  "name": "Bar Chart",
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-25T22:40:11.536Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T21:14:33.997Z"
+  },
+  "slug": "bar-chart",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "651349dfa1fa67449cfc0abc"
+  },
+  "name": "Area Chart",
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-26T21:15:11.824Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-08T05:46:29.512Z"
+  },
+  "slug": "area-chart",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "651349eda1fa67449cfc0abf"
+  },
+  "name": "Line Chart",
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-26T21:15:25.104Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T21:15:25.104Z"
+  },
+  "slug": "line-chart",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "651349f8a1fa67449cfc0ac2"
+  },
+  "name": "Pie Chart",
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-26T21:15:36.037Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T21:15:36.037Z"
+  },
+  "slug": "pie-chart",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65134a01a1fa67449cfc0ac5"
+  },
+  "name": "Doughnut Chart",
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-26T21:15:45.871Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T21:15:45.871Z"
+  },
+  "slug": "doughnut-chart",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65134a11a1fa67449cfc0ac8"
+  },
+  "name": "Polar Area Chart",
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-26T21:16:01.895Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-27T10:40:43.356Z"
+  },
+  "slug": "polar-area-chart",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65134a1ea1fa67449cfc0acb"
+  },
+  "name": "Radar Chart",
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-26T21:16:14.136Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-08T05:49:22.233Z"
+  },
+  "slug": "radar-chart",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65134a27a1fa67449cfc0ace"
+  },
+  "name": "Stacked Bar Chart",
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-26T21:16:23.524Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T21:16:23.524Z"
+  },
+  "slug": "stacked-bar-chart",
+  "__v": 0
+}]

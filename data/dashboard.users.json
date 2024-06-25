@@ -1,0 +1,100 @@
+[{
+  "_id": {
+    "$oid": "65071649d00a09f6b5fce327"
+  },
+  "name": "Akash Roy",
+  "email": "akashroy@gmail.com",
+  "password": "$2a$08$x.LEnulb06xyX1elAVyGJ.mbfWeM2xbrgTRMa8o5BvyH8GgdQIV.a",
+  "role": {
+    "$oid": "6507118d12d8f38441349fc6"
+  },
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-17T15:07:53.382Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T21:37:43.428Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6507169ad00a09f6b5fce32c"
+  },
+  "name": "Tohid Bin Azam",
+  "email": "tohidbinazam007@gmail.com",
+  "password": "$2a$08$NXEbiPLcSWVp2M9bgsokp.o/nGGcm4/aUzw.fnxgBCL/puizWnyUm",
+  "role": {
+    "$oid": "65070f7712d8f38441349fc1"
+  },
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-17T15:09:14.760Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-08T05:42:51.536Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65071ea8d00a09f6b5fce331"
+  },
+  "name": "Tonmoy Boyado",
+  "email": "tonmoyboyado@gmail.com",
+  "password": "$2a$08$rjvhS/7G2MVN.YBI9XnUzOaWpqneaqNHWLOKit3cBmFID1Li1hCNm",
+  "role": {
+    "$oid": "650711ac12d8f38441349fcb"
+  },
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-17T15:43:36.917Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-22T17:59:13.126Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6507f94b06d0f0c41b8a4e39"
+  },
+  "name": "Kazi Mafuz",
+  "email": "kazimafuz@gmail.com",
+  "password": "$2a$08$75SfbGinOXhzJsmdn0LFre8Rsaw0cCyyYW4vcOxNwsYZv5vKMAf7O",
+  "role": {
+    "$oid": "650711bb12d8f38441349fd0"
+  },
+  "status": false,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-09-18T07:16:27.864Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T21:38:23.031Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "652fb633d4500e83cacb4b9c"
+  },
+  "name": "Liaba Tasnia Tofa",
+  "email": "liabatasniatofa@gmail.com",
+  "password": "$2a$08$imirahPlWp9o85mNwBkq/O/w0px2.7xNmBOPh.xlPnsQJC5/CATaq",
+  "role": {
+    "$oid": "65070f7712d8f38441349fc1"
+  },
+  "status": true,
+  "trash": false,
+  "createdAt": {
+    "$date": "2023-10-18T10:40:51.151Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-18T10:40:51.151Z"
+  },
+  "__v": 0
+}]
